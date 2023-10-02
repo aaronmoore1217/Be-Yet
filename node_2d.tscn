@@ -29,7 +29,7 @@ animations = [{
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(10, -11)
+position = Vector2(81, 52)
 sprite_frames = SubResource("SpriteFrames_o6ou3")
 animation = &"pedro"
-frame_progress = 0.873527
+frame_progress = 0.703424
