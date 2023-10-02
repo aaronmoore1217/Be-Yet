@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://dbnf8aqvavkw3"]
+[gd_scene load_steps=5 format=3 uid="uid://dbnf8aqvavkw3"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://beq1yvotu8tp3" path="res://Art/pixilart-sprite.png" id="1_yvww2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8c6y"]
+atlas = ExtResource("1_yvww2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4c7h"]
+atlas = ExtResource("1_yvww2")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6ou3"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_r8c6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4c7h")
+}],
+"loop": true,
+"name": &"pedro",
+"speed": 3.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -11)
+sprite_frames = SubResource("SpriteFrames_o6ou3")
+animation = &"pedro"
+frame_progress = 0.873527
