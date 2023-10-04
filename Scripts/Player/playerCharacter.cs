@@ -10,6 +10,6 @@ public partial class playerCharacter : CharacterBody2D
         ScreenSize = GetViewportRect().Size;
     }
     public override void _Process(double delta){
-
+        
     }
 }
