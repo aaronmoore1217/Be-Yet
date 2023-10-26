@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbnf8aqvavkw3"]
+[gd_scene load_steps=8 format=3 uid="uid://dbnf8aqvavkw3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/playerCharacter.cs" id="1_y2myq"]
-[ext_resource type="Texture2D" uid="uid://beq1yvotu8tp3" path="res://Art/pixilart-sprite.png" id="1_yvww2"]
+[ext_resource type="Texture2D" uid="uid://dae51o7vuswq4" path="res://Art/guy man.png" id="2_q08lp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_80xgh"]
-atlas = ExtResource("1_yvww2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xahjd"]
+atlas = ExtResource("2_q08lp")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cadq4"]
-atlas = ExtResource("1_yvww2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0viq"]
+atlas = ExtResource("2_q08lp")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_og5n6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7ttb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_80xgh")
+"texture": SubResource("AtlasTexture_xahjd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cadq4")
+"texture": SubResource("AtlasTexture_f0viq")
 }],
 "loop": true,
 "name": &"default",
@@ -28,15 +28,39 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdc3h"]
 size = Vector2(100, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ywvw"]
+size = Vector2(20, 165)
+
 [node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -111.0
+offset_top = -68.0
+offset_right = -52.0
+offset_bottom = -42.0
+text = "Yo man
+"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_y2myq")
+metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(54, 54)
-sprite_frames = SubResource("SpriteFrames_og5n6")
+[node name="playerAnimation" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_t7ttb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(54, 54)
 shape = SubResource("RectangleShape2D_wdc3h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-104, -14)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_4ywvw")
+
+[node name="CameraController" type="Node2D" parent="."]
+position = Vector2(-39, 8)
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="CameraController"]
+zoom = Vector2(0.7, 0.7)

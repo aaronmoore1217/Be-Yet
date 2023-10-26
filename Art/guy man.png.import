@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beq1yvotu8tp3"
-path="res://.godot/imported/pixilart-sprite.png-938e39c139c95da6f6f6bc217487dd58.ctex"
+uid="uid://dae51o7vuswq4"
+path="res://.godot/imported/guy man.png-e2f8719b1ca98fddb3853b372089e0ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/pixilart-sprite.png"
-dest_files=["res://.godot/imported/pixilart-sprite.png-938e39c139c95da6f6f6bc217487dd58.ctex"]
+source_file="res://Art/guy man.png"
+dest_files=["res://.godot/imported/guy man.png-e2f8719b1ca98fddb3853b372089e0ad.ctex"]
 
 [params]
 
