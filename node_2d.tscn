@@ -73,3 +73,5 @@ texture = SubResource("PlaceholderTexture2D_pvwsx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
 shape = SubResource("RectangleShape2D_svy4y")
+
+[node name="AudioManager" type="Node2D" parent="."]
