@@ -8,44 +8,48 @@ public partial class playerCharacter : CharacterBody2D
     //runs on game ready
     public override void _Ready()
     {
-        Engine.MaxFps = 60;
+
     }
-    
+
+    public void GetInput()
+    {
+        Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
+        Velocity = inputDirection * Speed;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        GetInput();
+        MoveAndSlide();
+    }
+
     public override void _Process(double delta)
     {
-        
+
         Vector2 position = Vector2.Zero; // The player's movement vector.
         var playerAnimation = GetNode<AnimatedSprite2D>("playerAnimation");
 
-        /* movement */ 
+        /* movement */
         {
             if (Input.IsActionPressed("right"))
             {
-                position.X += Speed * (float)GetProcessDeltaTime();
                 turnedRight = true;
             }
 
             if (Input.IsActionPressed("left"))
             {
-                position.X -= Speed * (float)GetProcessDeltaTime();
                 turnedRight = false;
             }
 
-            if (Input.IsActionPressed("down"))
-            {
-                position.Y += Speed * (float)GetProcessDeltaTime();
-            }
-
-            if (Input.IsActionPressed("up"))
-            {
-                position.Y -= Speed * (float)GetProcessDeltaTime();
-            }
+            
         }
 
-        if (turnedRight){
+        if (turnedRight)
+        {
             playerAnimation.FlipH = false;
         }
-        else{
+        else
+        {
             playerAnimation.FlipH = true;
         }
 
