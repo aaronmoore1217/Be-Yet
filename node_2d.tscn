@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbnf8aqvavkw3"]
+[gd_scene load_steps=9 format=3 uid="uid://dbnf8aqvavkw3"]
 
 [ext_resource type="Script" path="res://Scripts/Player/playerCharacter.cs" id="1_y2myq"]
 [ext_resource type="Texture2D" uid="uid://dae51o7vuswq4" path="res://Art/guy man.png" id="2_q08lp"]
@@ -25,11 +25,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdc3h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pqrb"]
 size = Vector2(100, 100)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vbtkx"]
+size = Vector2(20, 400)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ywvw"]
-size = Vector2(20, 165)
+size = Vector2(20, 400)
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,17 +52,54 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_t7ttb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_wdc3h")
-
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(-553, 0)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-shape = SubResource("RectangleShape2D_4ywvw")
+shape = SubResource("RectangleShape2D_3pqrb")
 
 [node name="CameraController" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraController"]
 zoom = Vector2(0.7, 0.7)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall_L" type="Area2D" parent="Walls"]
+position = Vector2(-200, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall_L"]
+texture = SubResource("PlaceholderTexture2D_vbtkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall_L"]
+shape = SubResource("RectangleShape2D_4ywvw")
+
+[node name="Wall_R" type="Area2D" parent="Walls"]
+position = Vector2(200, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall_R"]
+texture = SubResource("PlaceholderTexture2D_vbtkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall_R"]
+shape = SubResource("RectangleShape2D_4ywvw")
+
+[node name="Wall_D" type="Area2D" parent="Walls"]
+position = Vector2(0, 200)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall_D"]
+texture = SubResource("PlaceholderTexture2D_vbtkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall_D"]
+shape = SubResource("RectangleShape2D_4ywvw")
+
+[node name="Wall_U" type="Area2D" parent="Walls"]
+position = Vector2(0, -200)
+rotation = -1.5708
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall_U"]
+texture = SubResource("PlaceholderTexture2D_vbtkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall_U"]
+shape = SubResource("RectangleShape2D_4ywvw")

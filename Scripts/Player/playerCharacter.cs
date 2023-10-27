@@ -4,8 +4,7 @@ using System;
 public partial class playerCharacter : CharacterBody2D
 {
     public int Speed { get; set; } = 400;
-    public Vector2 ScreenSize;
-    public bool turnedRight = false;
+    public bool turnedRight = true;
     //runs on game ready
     public override void _Ready()
     {
@@ -23,12 +22,13 @@ public partial class playerCharacter : CharacterBody2D
             if (Input.IsActionPressed("right"))
             {
                 position.X += Speed * (float)GetProcessDeltaTime();
+                turnedRight = true;
             }
 
             if (Input.IsActionPressed("left"))
             {
                 position.X -= Speed * (float)GetProcessDeltaTime();
-
+                turnedRight = false;
             }
 
             if (Input.IsActionPressed("down"))
@@ -42,7 +42,12 @@ public partial class playerCharacter : CharacterBody2D
             }
         }
 
-        
+        if (turnedRight){
+            playerAnimation.FlipH = false;
+        }
+        else{
+            playerAnimation.FlipH = true;
+        }
 
         if (position.Length() > 0)
         {
