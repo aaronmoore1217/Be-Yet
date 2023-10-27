@@ -34,32 +34,31 @@ size = Vector2(20, 165)
 [node name="Node2D" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = -111.0
-offset_top = -68.0
-offset_right = -52.0
-offset_bottom = -42.0
+offset_left = -30.0
+offset_top = -116.0
+offset_right = 29.0
+offset_bottom = -90.0
 text = "Yo man
 "
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_y2myq")
 metadata/_edit_group_ = true
 
-[node name="playerAnimation" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="playerAnimation" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_t7ttb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_wdc3h")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-104, -14)
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-553, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 shape = SubResource("RectangleShape2D_4ywvw")
 
 [node name="CameraController" type="Node2D" parent="."]
-position = Vector2(-39, 8)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraController"]
