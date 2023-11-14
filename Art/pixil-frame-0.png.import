@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2gibh1lfacja"
-path="res://.godot/imported/guy man.png-aa2bead5f7b25a177d9fe4891fc984f7.ctex"
+uid="uid://u4w41olepoy2"
+path="res://.godot/imported/pixil-frame-0.png-f23d7db4bb1e8285cd534f490799bb04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/Player/guy man.png"
-dest_files=["res://.godot/imported/guy man.png-aa2bead5f7b25a177d9fe4891fc984f7.ctex"]
+source_file="res://Art/pixil-frame-0.png"
+dest_files=["res://.godot/imported/pixil-frame-0.png-f23d7db4bb1e8285cd534f490799bb04.ctex"]
 
 [params]
 

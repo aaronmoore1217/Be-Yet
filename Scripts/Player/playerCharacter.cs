@@ -3,27 +3,58 @@ using System;
 
 public partial class playerCharacter : CharacterBody2D
 {
-    public int Speed { get; set; } = 400;
+    [Export] public int Speed { get; set; } = 400;
     public bool turnedRight = true;
     AnimatedSprite2D playerAnimation;
+    Sprite2D playerBody;
     //runs on game ready
     public override void _Ready()
     {
         playerAnimation = GetNode<AnimatedSprite2D>("playerAnimation");
+        playerBody = GetNode<Sprite2D>("playerBody");
     }
 
     public void GetInput()
     {
         Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
         Velocity = inputDirection * Speed;
-        
-        if (Input.IsActionPressed("right"))
+        GD.Print(inputDirection);
+        switch (inputDirection)
         {
-            turnedRight = true;
-        }
-        if (Input.IsActionPressed("left"))
-        {
-            turnedRight = false;
+            //down left
+            case ((float)-0.70710677, (float)-0.70710677):
+                playerAnimation.RotationDegrees = 315;
+                break;
+            //up right
+            case ((float)0.70710677, (float)0.70710677):
+                playerAnimation.RotationDegrees = 135;
+                break;
+            //right down
+            case ((float)0.70710677, (float)-0.70710677):
+                playerAnimation.RotationDegrees = 45;
+                break;
+            //up left
+            case ((float)-0.70710677, (float)0.70710677):
+                playerAnimation.RotationDegrees = 225;
+                break;
+            //up
+            case (0, 1):
+                playerAnimation.RotationDegrees = 180;
+                break;
+            //down
+            case (0, -1):
+                playerAnimation.RotationDegrees = 0;
+                break;
+            
+            //left
+            case (-1, 0):
+                playerAnimation.RotationDegrees = 270;
+                break;
+            //right
+            case (1, 0):
+                playerAnimation.RotationDegrees = 90;
+                break;
+
         }
 
         //start and stop animation
@@ -31,21 +62,16 @@ public partial class playerCharacter : CharacterBody2D
         {
             Velocity = Velocity.Normalized() * Speed;
             playerAnimation.Play();
+            playerAnimation.Visible = true;
+            playerBody.Visible = false;
         }
         else
         {
             playerAnimation.Stop();
+            playerAnimation.Visible = false;
+            playerBody.Visible = true;
         }
 
-        //turning
-        if (turnedRight)
-        {
-            playerAnimation.FlipH = false;
-        }
-        else
-        {
-            playerAnimation.FlipH = true;
-        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -56,6 +82,6 @@ public partial class playerCharacter : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        
+
     }
 }
