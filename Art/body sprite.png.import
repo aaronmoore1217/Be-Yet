@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ix1j8bwy1c8"
-path="res://.godot/imported/Wall-Glass_01-64x64.png-8eb1ffca4b443762620d0ec1bfd3c50d.ctex"
+uid="uid://d20aw7ackhto3"
+path="res://.godot/imported/body sprite.png-749bb1a27e99a99a92d60c1db4906c7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/Walls/Wall-Glass_01-64x64.png"
-dest_files=["res://.godot/imported/Wall-Glass_01-64x64.png-8eb1ffca4b443762620d0ec1bfd3c50d.ctex"]
+source_file="res://Art/body sprite.png"
+dest_files=["res://.godot/imported/body sprite.png-749bb1a27e99a99a92d60c1db4906c7d.ctex"]
 
 [params]
 

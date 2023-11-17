@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e4m7at4trtep"
-path="res://.godot/imported/Floor - Metal 1 64x64.png-74b4f787a5edf1791a23bd2624686754.ctex"
+uid="uid://0rnl3640nbdv"
+path="res://.godot/imported/master man.png-3a40c04ac450639a01e129566af2a512.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/Floors/Floor - Metal 1 64x64.png"
-dest_files=["res://.godot/imported/Floor - Metal 1 64x64.png-74b4f787a5edf1791a23bd2624686754.ctex"]
+source_file="res://Art/master man.png"
+dest_files=["res://.godot/imported/master man.png-3a40c04ac450639a01e129566af2a512.ctex"]
 
 [params]
 

@@ -3,15 +3,16 @@ using System;
 
 public partial class playerCharacter : CharacterBody2D
 {
+    [ExportCategory("Player Stats")]
     [Export] public int Speed { get; set; } = 400;
-    public bool turnedRight = true;
-    AnimatedSprite2D playerAnimation;
-    Sprite2D playerBody;
+
+    [ExportCategory("Sprites")]
+    [Export] AnimatedSprite2D playerAnimation;
+    [Export] Sprite2D playerBody;
     //runs on game ready
     public override void _Ready()
     {
-        playerAnimation = GetNode<AnimatedSprite2D>("playerAnimation");
-        playerBody = GetNode<Sprite2D>("playerBody");
+        
     }
 
     public void GetInput()
