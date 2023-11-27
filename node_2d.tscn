@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbnf8aqvavkw3"]
+[gd_scene load_steps=16 format=3 uid="uid://dbnf8aqvavkw3"]
 
 [ext_resource type="Script" path="res://node_2d.cs" id="1_3ray8"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCharacter.cs" id="1_y2myq"]
+[ext_resource type="Script" path="res://InventoryManager.cs" id="3_k1m4h"]
 [ext_resource type="Texture2D" uid="uid://d20aw7ackhto3" path="res://Art/body sprite.png" id="3_nqtet"]
 [ext_resource type="Texture2D" uid="uid://0rnl3640nbdv" path="res://Art/master man.png" id="4_oplpc"]
+[ext_resource type="Script" path="res://UIManager.cs" id="6_4gdr1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pqrb"]
 size = Vector2(16, 16)
@@ -342,41 +344,67 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dcdnb")
 sources/1 = SubResource("TileSetAtlasSource_2ej2u")
 
-[node name="Node2D" type="Node2D"]
+[node name="Workspace" type="Node2D"]
 script = ExtResource("1_3ray8")
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("playerAnimation", "playerBody")]
-position = Vector2(-28, -29)
+position = Vector2(-8, -8)
 motion_mode = 1
 script = ExtResource("1_y2myq")
 Speed = 100
-playerAnimation = NodePath("playerAnimation")
+playerAnimation = NodePath("CollisionShape2D/playerAnimation")
 playerBody = NodePath("playerBody")
 metadata/_edit_group_ = true
 
+[node name="InventoryManager" type="Node2D" parent="Player"]
+script = ExtResource("3_k1m4h")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_3pqrb")
 
-[node name="playerBody" type="Sprite2D" parent="Player"]
-position = Vector2(-4, -4)
-texture = ExtResource("3_nqtet")
-
-[node name="playerAnimation" type="AnimatedSprite2D" parent="Player"]
+[node name="playerAnimation" type="AnimatedSprite2D" parent="Player/CollisionShape2D"]
 visible = false
 position = Vector2(-4, -4)
 sprite_frames = SubResource("SpriteFrames_t7ttb")
 frame_progress = 0.246028
 
+[node name="playerBody" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_nqtet")
+
 [node name="CameraController" type="Node2D" parent="Player"]
-position = Vector2(-4, -4)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player/CameraController"]
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
-[node name="AudioManager" type="Node2D" parent="."]
+[node name="UIManager" type="Node2D" parent="Player" node_paths=PackedStringArray("tabMenu", "escMenu")]
+position = Vector2(8, 8)
+script = ExtResource("6_4gdr1")
+tabMenu = NodePath("TabMenu")
+escMenu = NodePath("EscMenu")
+
+[node name="TabMenu" type="Node2D" parent="Player/UIManager"]
+visible = false
+position = Vector2(-8, -8)
+
+[node name="Label" type="Label" parent="Player/UIManager/TabMenu"]
+offset_left = -102.0
+offset_top = -76.0
+offset_right = 61.0
+offset_bottom = -50.0
+text = "YOU GOTTA HELP ME"
+
+[node name="EscMenu" type="Node2D" parent="Player/UIManager"]
+visible = false
+position = Vector2(-8, -8)
+
+[node name="Label" type="Label" parent="Player/UIManager/EscMenu"]
+offset_left = -102.0
+offset_top = 50.0
+offset_right = 27.0
+offset_bottom = 76.0
+text = "HELP ME ESCAPE"
 
 [node name="MapManager" type="Node2D" parent="."]
 
@@ -386,3 +414,5 @@ format = 2
 layer_0/z_index = -1
 
 [node name="EnemyManager" type="Node2D" parent="."]
+
+[node name="AudioManager" type="Node2D" parent="."]

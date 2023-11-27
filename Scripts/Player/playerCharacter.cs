@@ -19,7 +19,6 @@ public partial class playerCharacter : CharacterBody2D
     {
         Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
         Velocity = inputDirection * Speed;
-        GD.Print(inputDirection);
         switch (inputDirection)
         {
             //down left
