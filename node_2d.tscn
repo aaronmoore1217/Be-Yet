@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbnf8aqvavkw3"]
+[gd_scene load_steps=16 format=3 uid="uid://dbnf8aqvavkw3"]
 
 [ext_resource type="Script" path="res://node_2d.cs" id="1_3ray8"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCharacter.cs" id="1_y2myq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d20aw7ackhto3" path="res://Art/body sprite.png" id="3_nqtet"]
 [ext_resource type="Texture2D" uid="uid://0rnl3640nbdv" path="res://Art/master man.png" id="4_oplpc"]
 [ext_resource type="Script" path="res://UIManager.cs" id="6_4gdr1"]
-[ext_resource type="Texture2D" uid="uid://c0ugrqe5wcnuq" path="res://Art/scaryEnemy.png" id="5_kbuso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pqrb"]
 size = Vector2(16, 16)
@@ -355,26 +354,6 @@ script = ExtResource("1_y2myq")
 Speed = 100
 playerAnimation = NodePath("CollisionShape2D/playerAnimation")
 playerBody = NodePath("playerBody")
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wb3f"]
-radius = 8.0
-height = 22.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh4gv"]
-size = Vector2(16, 8.5)
-
-[sub_resource type="Curve2D" id="Curve2D_3s3fu"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, 8, 0, 0, 0, 0, 114, -6, 0, 0, 0, 0, 125, -19, 0, 0, 0, 0, 131, -39, 0, 0, 0, 0, 128, -58, 0, 0, 0, 0, 119, -74, 0, 0, 0, 0, 107, -83, 0, 0, 0, 0, 93, -84, 0, 0, 0, 0, 74, -86, 0, 0, 0, 0, 46, -84, 0, 0, 0, 0, 26, -82, 0, 0, 0, 0, 9, -77, 0, 0, 0, 0, -6, -70, 0, 0, 0, 0, -18, -55, 0, 0, 0, 0, -25, -25, 0, 0, 0, 0, -23, -7, 0, 0, 0, 0, -17, 11, 0, 0, 0, 0, 0, 21, 0, 0, 0, 0, 27, 28, 0, 0, 0, 0, 27, 28, 0, 0, 0, 0, 60, 27, 0, 0, 0, 0, 81, 25, 0, 0, 0, 0, 94, 15, 0, 0, 0, 0, 100, 8)
-}
-point_count = 24
-
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_3ray8")
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-28, -29)
-motion_mode = 1
-script = ExtResource("1_y2myq")
 metadata/_edit_group_ = true
 
 [node name="InventoryManager" type="Node2D" parent="Player"]
@@ -437,28 +416,3 @@ layer_0/z_index = -1
 [node name="EnemyManager" type="Node2D" parent="."]
 
 [node name="AudioManager" type="Node2D" parent="."]
-[node name="CharacterBody2D" type="CharacterBody2D" parent="EnemyManager"]
-position = Vector2(178, -54)
-motion_mode = 1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyManager/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_4wb3f")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="EnemyManager/CharacterBody2D"]
-position = Vector2(0, 6.25)
-shape = SubResource("RectangleShape2D_qh4gv")
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyManager/CharacterBody2D"]
-position = Vector2(0, 7.62939e-06)
-scale = Vector2(0.410714, 0.375)
-texture = ExtResource("5_kbuso")
-
-[node name="Path2D" type="Path2D" parent="EnemyManager/CharacterBody2D"]
-position = Vector2(-100, -7)
-curve = SubResource("Curve2D_3s3fu")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyManager/CharacterBody2D/Path2D"]
-position = Vector2(100, 8)
-rotation = -0.785398
-scale = Vector2(1, 1)
